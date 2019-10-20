@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .ex {
+      background-color: #151718;
+      color: #CFD2D1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 68px;
+      align-items: center;
+    }
+
+    .ex-row {
+      padding: 10px 30px;
+    }
+
+    input {
+      margin: 0 15px;
+    }
+
+    .sum {
+      margin-top: 10px;
+      background-color: #fff;
+      border-radius: 10px;
+      width: 100px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      color: #151718;
+      font-size: 18px;
+    }
+
+    body {
+      background: 0% 0% / auto repeat rgb(171, 184, 195);
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class='ex'>
+    <div class="ex-row .ex-row_1">
+      <input type="radio" value="1" name="row_1">1</input>
+      <input type="radio" value="2" name="row_1">2</input>
+      <input type="radio" value="3" name="row_1">3</input>
+    </div>
+    <div class="ex-row .ex-row_2">
+      <input type="radio" value="1" name="row_2">1</input>
+      <input type="radio" value="2" name="row_2">2</input>
+      <input type="radio" value="3" name="row_2">3</input>
+    </div>
+    <div class="ex-row .ex-row_3">
+      <input type="radio" value="1" name="row_3">1</input>
+      <input type="radio" value="2" name="row_3">2</input>
+      <input type="radio" value="3" name="row_3">3</input>
+    </div>
+    <div class="sum"></div>
+  </div>
+</body>
+<script>
+  const body = document.querySelector('.ex');
+  const result = document.querySelector('.sum');
+  let isChosen = [false, false, false];
+  let sum = 0;
+  const data = {}
+  body.addEventListener('click', (e) => { 
+    let name = e.target.getAttribute('name');
+    data[name] = e.target.getAttribute('value');;
+    if(Object.keys(data).length === 3) {
+      sum = Object.values(data).reduce((a, b) => + a + + b)
+      result.innerHTML = sum;
+    }
+  })
+</script>
+
+</html>
